@@ -1,6 +1,6 @@
 # Homzi
 
-Homzi is a Swiggy-inspired home-maintenance marketplace that connects customers with nearby service hubs, enabling real‑time booking, professional onboarding, and admin management in a single React + Node.js stack.
+Homzi is a home-maintenance marketplace that connects customers with nearby service hubs, enabling real‑time booking, professional onboarding, and admin management in a single React + Node.js stack.
 
 ## ✨ Features
 - **Location-aware bookings** – surfaces nearby Homzi hubs, availability badges, and provider details on the booking page.
