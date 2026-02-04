@@ -509,130 +509,87 @@ const Booking = () => {
   const [services, setServices] = useState(() => ([
     {
       id: 1,
-      name: 'Basic Plumbing Service',
+      name: 'Emergency Plumbing Visit',
       category: 'plumbing',
-      description: 'Professional plumbing solutions for your home needs, from repairs to installations.',
-      price: 80,
-      duration: '1-2 hours',
+      subServiceId: 'plumbing_emergency',
+      description: '24/7 emergency visit for leaks, burst pipes, or drainage issues.',
+      price: 799,
+      duration: '30min–1 hour',
       rating: 4.8,
-      reviews: 156,
+      reviews: 540,
       available: true,
-      image: '/images/services/plumbing.jpg',
-      features: ['Leak Detection', 'Pipe Repair', 'Drain Cleaning'],
-      badges: ['Popular', 'Fast Service'],
+      image: '/images/services/plumbing-emergency.jpg',
+      features: ['30-min response in metros', 'Genuine spares', 'Safety-checked pros'],
+      badges: ['Most Booked', 'Emergency'],
       centerId: 1,
       availability: 'Available Today'
     },
     {
       id: 2,
-      name: 'Electrical Wiring',
-      category: 'electrical',
-      description: 'Expert electrical repairs and installations by certified professionals.',
-      price: 120,
-      duration: '2-4 hours',
+      name: 'Full Home Deep Cleaning (2 BHK)',
+      category: 'cleaning',
+      subServiceId: 'clean_full_home',
+      description: 'Floor, kitchen, bathroom, balcony and dusting with machine tools.',
+      price: 3499,
+      duration: '6-8 hours',
       rating: 4.9,
-      reviews: 203,
+      reviews: 310,
       available: true,
-      image: '/images/services/electrical.jpg',
-      features: ['Wiring Installation', 'Circuit Testing', 'Safety Inspection'],
-      badges: ['Top Rated'],
+      image: '/images/services/deep-clean-2bhk.jpg',
+      features: ['Mechanised cleaning', 'Eco-friendly chemicals', '2-person crew'],
+      badges: ['Popular', 'Festive Offer'],
+      centerId: 9,
+      availability: 'Slots Filling Fast'
+    },
+    {
+      id: 3,
+      name: 'AC Service & Gas Top-Up',
+      category: 'appliance',
+      subServiceId: 'app_ac',
+      description: 'Wet service, filter cleaning, basic repairs, and gas top-up if needed.',
+      price: 1499,
+      duration: '1-2 hours',
+      rating: 4.7,
+      reviews: 420,
+      available: true,
+      image: '/images/services/ac-service.jpg',
+      features: ['90-day service warranty', 'Leak check', 'Cooling test'],
+      badges: ['Summer Special'],
+      centerId: 8,
+      availability: 'Available Today'
+    },
+    {
+      id: 4,
+      name: 'Interior Painting (1 Room)',
+      category: 'painting',
+      subServiceId: 'paint_interior',
+      description: 'Repaint a single room with premium emulsion paints and basic putty.',
+      price: 2499,
+      duration: '1 day',
+      rating: 4.6,
+      reviews: 190,
+      available: true,
+      image: '/images/services/interior-paint.jpg',
+      features: ['Dust cover protection', 'Color consultation', 'Cleanup included'],
+      badges: ['Trending'],
       centerId: 2,
       availability: 'Available Today'
     },
     {
-      id: 3,
-      name: 'HVAC Maintenance',
-      category: 'hvac',
-      description: 'Complete HVAC system maintenance and repair services.',
-      price: 150,
-      duration: '2-4 hours',
-      rating: 4.7,
-      reviews: 128,
-      available: false,
-      image: '/images/services/hvac.jpg',
-      features: ['System Inspection', 'Filter Replacement', 'Performance Tuning'],
-      badges: ['Premium'],
-      centerId: 5,
-      availability: 'Next Day Slots'
-    },
-    {
-      id: 4,
-      name: 'Smart Home Setup',
-      category: 'smart home',
-      description: 'Professional smart home device installation and configuration.',
-      price: 200,
-      duration: 'Over 4 hours',
-      rating: 4.6,
-      reviews: 89,
-      available: true,
-      image: '/images/services/smart-home.jpg',
-      features: ['Device Installation', 'Network Setup', 'System Integration'],
-      badges: ['New'],
-      centerId: 7,
-      availability: 'Slots Filling Fast'
-    },
-    {
       id: 5,
-      name: 'Quick Plumbing Fix',
-      category: 'plumbing',
-      description: 'Fast response plumbing repair for minor issues.',
-      price: 45,
-      duration: 'Under 1 hour',
-      rating: 4.5,
-      reviews: 112,
-      available: true,
-      image: '/images/services/quick-plumbing.jpg',
-      features: ['Quick Fixes', 'Basic Maintenance'],
-      badges: ['Express Service'],
-      centerId: 4,
-      availability: 'Available Today'
-    },
-    {
-      id: 6,
-      name: 'Deep Home Cleaning',
-      category: 'cleaning',
-      description: 'Full home sanitation with steam treatment, UV disinfection, and kitchen detailing.',
-      price: 220,
-      duration: 'Over 4 hours',
-      rating: 4.9,
-      reviews: 310,
-      available: true,
-      image: '/images/services/deep-clean.jpg',
-      features: ['Steam Sanitisation', 'Kitchen Degreasing', 'UV Sterilisation'],
-      badges: ['Most Booked'],
-      centerId: 6,
-      availability: 'Slots Filling Fast'
-    },
-    {
-      id: 7,
-      name: 'Appliance Repair Pack',
-      category: 'appliance repair',
-      description: 'Multi-appliance bundle for washing machines, refrigerators, and microwaves.',
-      price: 140,
-      duration: '2-4 hours',
+      name: 'Termite Treatment (Up to 2 BHK)',
+      category: 'pest_control',
+      subServiceId: 'pest_termites',
+      description: 'Drill-fill-seal treatment with long-term protection for wood and walls.',
+      price: 3999,
+      duration: '3-4 hours',
       rating: 4.7,
-      reviews: 175,
+      reviews: 210,
       available: true,
-      image: '/images/services/appliance.jpg',
-      features: ['Original Spares', '90-day Warranty', 'Expert Diagnosis'],
-      badges: ['Bundle Offer'],
-      centerId: 7,
-      availability: 'Available Today'
-    },
-    {
-      id: 8,
-      name: 'Eco Pest Control',
-      category: 'pest control',
-      description: 'Child and pet safe pest control with herbal solutions and 45-day follow up.',
-      price: 110,
-      duration: '1-2 hours',
-      rating: 4.6,
-      reviews: 142,
-      available: true,
-      image: '/images/services/pest-control.jpg',
-      features: ['Herbal Treatment', '45-day Monitoring', 'Crack Sealing'],
-      badges: ['Eco Friendly'],
-      centerId: 8,
+      image: '/images/services/termite.jpg',
+      features: ['1-year service warranty', 'Odour-controlled chemicals'],
+      badges: ['High Protection'],
+      centerId: 6,
       availability: 'Next Day Slots'
     }
   ]));
@@ -667,10 +624,21 @@ const Booking = () => {
   const servicesWithProviders = useMemo(() => {
     return services.map(service => {
       const matchingLeads = providerLeads.filter(lead => {
-        const matchesCenter = lead.centerId && Number(lead.centerId) === Number(service.centerId);
-        const leadServices = (lead.services || []).map(s => s.toLowerCase());
-        const matchesCategory = leadServices.includes(service.category.toLowerCase());
-        return matchesCenter || matchesCategory;
+        const leadServices = Array.isArray(lead.services) ? lead.services : [];
+
+        const matchesSubService =
+          service.subServiceId && leadServices.includes(service.subServiceId);
+
+        const matchesCategory =
+          !matchesSubService &&
+          leadServices.some(
+            id => typeof id === 'string' && id.startsWith(service.category + '_')
+          );
+
+        const matchesCenter =
+          lead.centerId && Number(lead.centerId) === Number(service.centerId);
+
+        return matchesSubService || matchesCenter || matchesCategory;
       });
 
       const bestLead = matchingLeads[0];

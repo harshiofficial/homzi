@@ -14,6 +14,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { submitProfessionalLead } from '../api/homziApi';
 import { serviceCenters } from '../data/serviceCenters';
+import { SERVICE_CATEGORIES } from '../data/serviceCatalog';
 
 const StyledSignup = styled.div`
   padding: 80px 0;
@@ -181,15 +182,7 @@ const StyledSignup = styled.div`
   }
 `;
 
-const serviceCategories = [
-  { id: 'plumbing', name: 'Plumbing', icon: faTools },
-  { id: 'electrical', name: 'Electrical', icon: faTools },
-  { id: 'hvac', name: 'HVAC', icon: faTools },
-  { id: 'carpentry', name: 'Carpentry', icon: faTools },
-  { id: 'painting', name: 'Painting', icon: faTools },
-  { id: 'general', name: 'General Maintenance', icon: faTools },
-  { id: 'other', name: 'Other', icon: faTools }
-];
+const serviceCategories = SERVICE_CATEGORIES;
 
 const ProfessionalSignup = () => {
   const [formData, setFormData] = useState({
@@ -485,33 +478,39 @@ const ProfessionalSignup = () => {
 
           <div className="form-group">
             <label>Select the services you offer</label>
-            <div className="services-grid">
-              {serviceCategories.map(service => (
-                <div
-                  key={service.id}
-                  className={`service-option ${formData.services.includes(service.id) ? 'selected' : ''}`}
-                  onClick={() => toggleService(service.id)}
-                >
-                  <FontAwesomeIcon icon={service.icon} className="icon" />
-                  <span>{service.name}</span>
+
+            <div className="services-grid" style={{ display: 'block' }}>
+              {serviceCategories.map(category => (
+                <div key={category.id} style={{ marginBottom: '1.25rem' }}>
+                  <div style={{ fontWeight: 600, marginBottom: '0.5rem' }}>
+                    {category.label}
+                  </div>
+                  <div
+                    className="category-services-grid"
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                      gap: '0.5rem'
+                    }}
+                  >
+                    {category.subServices.map(sub => (
+                      <div
+                        key={sub.id}
+                        className={
+                          'service-option ' +
+                          (formData.services.includes(sub.id) ? 'selected' : '')
+                        }
+                        onClick={() => toggleService(sub.id)}
+                      >
+                        <span>{sub.label}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
+
             {errors.services && <div className="error">{errors.services}</div>}
-            
-            {formData.services.includes('other') && (
-              <div className="input-group" style={{ marginTop: '1rem' }}>
-                <FontAwesomeIcon icon={faTools} className="icon" />
-                <input
-                  type="text"
-                  name="otherServiceDescription"
-                  value={formData.otherServiceDescription}
-                  onChange={handleChange}
-                  placeholder="Please describe your other service"
-                />
-              </div>
-            )}
-            {errors.otherServiceDescription && <div className="error">{errors.otherServiceDescription}</div>}
           </div>
 
           <div className="form-group">
